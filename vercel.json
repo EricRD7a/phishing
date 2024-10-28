@@ -1,0 +1,19 @@
+{
+    "version":2,
+    "builds":[
+        {
+            "phishing": "phishing/server.js",
+            "use": "@vercel/node"
+         }
+        ],
+
+        "routes": [{
+            "phishing": "(.*)",
+            "dest": "phishing/server.js"
+        }
+
+
+        ]
+
+    
+}
