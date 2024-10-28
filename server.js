@@ -61,7 +61,8 @@ app.post('/upload', upload.single('photo'), (req, res) => {
 
 // Rota pública
 app.get('/public', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/index.html'));
+    res.send('Esta é uma rota pública acessível por qualquer um!');
+    
 });
 
 app.listen(port, () => {
