@@ -61,10 +61,10 @@ app.post('/upload', upload.single('photo'), (req, res) => {
 
 // Rota pública
 app.get('/public', (req, res) => {
-    res.send('Esta é uma rota pública acessível por qualquer um!');
-    
+    res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
+// Iniciando o servidor
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
 });
